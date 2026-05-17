@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Invitación Especial</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- PANTALLA 1: PORTADA INTERACTIVA -->
+    <div id="portada" class="wrapper-portada">
+        <div class="mitad mitad-superior">
+            <!-- Aquí irá la foto del País/Ciudad A -->
+        </div>
+        
+        <!-- El Logo/Botón que divide ambas mitades -->
+        <button id="btn-comenzar" class="logo-central">
+            <img src="tu-logo.png" alt="Logo Institución">
+        </button>
+
+        <div class="mitad mitad-inferior">
+            <!-- Aquí irá la foto del País/Ciudad B -->
+        </div>
+    </div>
+
+    <!-- PANTALLA 2: CONTENIDO DE LA INVITACIÓN (Oculto al inicio) -->
+    <div id="invitacion" class="contenedor-invitacion oculto">
+        <div class="carta">
+            <h1>¡Estás Invitado!</h1>
+            <p class="subtitulo">Reunión Internacional de Amigos</p>
+            
+            <div class="detalles">
+                <p><strong>📅 Fecha:</strong> Sábado, 6 de Junio de 2026</p>
+                <!-- El ID 'hora-local' lo usaremos con JS más adelante -->
+                <p><strong>⏰ Hora:</strong> <span id="hora-local">20:00 (Hora de Chile)</span></p>
+                <p><strong>📍 Lugar:</strong> Plataforma Virtual (Zoom)</p>
+            </div>
+
+            <p class="mensaje">Nos encantaría contar con tu presencia en este gran encuentro transfronterizo.</p>
+            
+            <!-- Botón de acción para confirmar -->
+            <a href="https://wa.me/tu-numero-aqui?text=Hola!%20Confirmo%20mi%20asistencia" class="btn-confirmar" target="_blank">
+                Confirmar Asistencia
+            </a>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
