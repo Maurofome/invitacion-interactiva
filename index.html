@@ -8,41 +8,84 @@
 </head>
 <body>
 
-    <!-- PANTALLA 1: PORTADA INTERACTIVA -->
     <div id="portada" class="wrapper-portada">
-        <div class="mitad mitad-superior">
-            <!-- Aquí irá la foto del País/Ciudad A -->
+        
+        <div class="mitad mitad-superior"></div>
+        
+        <div class="barra-divisoria">
+            <div class="grupo-banderas-izq">
+                <div class="mini-bandera mini-chile"></div>
+                <div class="mini-bandera mini-brasil"></div>
+            </div>
+            
+            <div class="grupo-banderas-der">
+                <div class="mini-bandera mini-argentina"></div>
+                <div class="mini-bandera mini-usa"></div>
+            </div>
         </div>
         
-        <!-- El Logo/Botón que divide ambas mitades -->
         <button id="btn-comenzar" class="logo-central">
-            <img src="tu-logo.png" alt="Logo Institución">
+            <div class="logo-wrapper">
+                <img src="images/logo.png" alt="Logo Institución">
+            </div>
+            <span class="texto-presione">Presione aquí</span>
         </button>
 
-        <div class="mitad mitad-inferior">
-            <!-- Aquí irá la foto del País/Ciudad B -->
-        </div>
+        <div class="mitad mitad-inferior"></div>
     </div>
 
-    <!-- PANTALLA 2: CONTENIDO DE LA INVITACIÓN (Oculto al inicio) -->
-    <div id="invitacion" class="contenedor-invitacion oculto">
+    <div id="invitacion" class="contenedor-invitacion">
+        
+        <div class="fondo-banderas">
+            <div class="fila-banderas">
+                <div class="cuadrante bandera-chile"></div>
+                <div class="cuadrante bandera-brasil"></div>
+            </div>
+            <div class="fila-banderas">
+                <div class="cuadrante bandera-argentina"></div>
+                <div class="cuadrante bandera-usa"></div>
+            </div>
+        </div>
+
         <div class="carta">
-            <h1>¡Estás Invitado!</h1>
-            <p class="subtitulo">Reunión Internacional de Amigos</p>
             
-            <div class="detalles">
-                <p><strong>📅 Fecha:</strong> Sábado, 6 de Junio de 2026</p>
-                <!-- El ID 'hora-local' lo usaremos con JS más adelante -->
-                <p><strong>⏰ Hora:</strong> <span id="hora-local">20:00 (Hora de Chile)</span></p>
-                <p><strong>📍 Lugar:</strong> Plataforma Virtual (Zoom)</p>
+            <div class="fila-logo-invitacion">
+                <div class="grupo-mini-banderas">
+                    <div class="mini-bandera mini-chile"></div>
+                    <div class="mini-bandera mini-brasil"></div>
+                </div>
+
+                <div class="logo-invitacion">
+                    <img src="images/logo.png" alt="Logo FJSNA">
+                </div>
+
+                <div class="grupo-mini-banderas">
+                    <div class="mini-bandera mini-argentina"></div>
+                    <div class="mini-bandera mini-usa"></div>
+                </div>
             </div>
 
-            <p class="mensaje">Nos encantaría contar con tu presencia en este gran encuentro transfronterizo.</p>
+            <h1>FJSNA SANTIAGO-VIÑA DEL MAR 2026</h1>
+            <p class="subtitulo">Reunión Internacional</p>
             
-            <!-- Botón de acción para confirmar -->
-            <a href="https://wa.me/tu-numero-aqui?text=Hola!%20Confirmo%20mi%20asistencia" class="btn-confirmar" target="_blank">
-                Confirmar Asistencia
-            </a>
+            <div class="contador-contenedor">
+                <p class="titulo-cuenta">El evento inicia en:</p>
+                <div id="cuenta-regresiva" class="reloj">
+                    <div class="tiempo-bloque"><span id="dias">00</span><sub>Días</sub></div>
+                    <div class="tiempo-bloque"><span id="horas">00</span><sub>Hrs</sub></div>
+                    <div class="tiempo-bloque"><span id="minutos">00</span><sub>Min</sub></div>
+                    <div class="tiempo-bloque"><span id="segundos">00</span><sub>Seg</sub></div>
+                </div>
+            </div>
+
+            <div class="detalles">
+                <p><strong>Fecha:</strong> Del 22 Al 28 de Octubre del 2026</p>
+                <p><strong>Hora:</strong> 20:00 horas</p>
+                <p><strong>Lugar:</strong> Santiago y Viña del Mar, Chile</p>
+            </div>
+
+            <p class="mensaje">Nos encantaría contar con tu presencia en este gran encuentro.</p>
+            
         </div>
     </div>
 

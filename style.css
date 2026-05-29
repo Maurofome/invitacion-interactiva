@@ -1,0 +1,414 @@
+/* ==========================================================
+   RESET GENERAL: Ajuste perfecto para pantallas de celulares
+   ========================================================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #1a1a1a;
+    color: #e0e0e0;
+    overflow: hidden; /* Evita rebotes o scrolls innecesarios en el teléfono */
+    height: 100vh;
+    width: 100vw;
+}
+
+/* ==========================================================
+   PANTALLA 1: PORTADA INTERACTIVA (SANTIAGO Y VIÑA)
+   ========================================================== */
+.wrapper-portada {
+    position: relative;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 20; /* Subimos el z-index para tapar la invitación correctamente */
+    transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1); /* Efecto cortina fluida */
+}
+
+/* Cada mitad ocupa el 50% de la altura de la pantalla */
+.mitad {
+    height: 50vh;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter: grayscale(15%) brightness(75%); /* Un poco más oscuro para resaltar el logo */
+}
+
+/* Capa oscura para que las fotos de la portada no encandilen */
+.mitad::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(26, 26, 26, 0.4);
+}
+
+/* Carga de fotos respetando tus extensiones reales */
+.mitad-superior {
+    background-image: url('images/santiago.png');
+}
+
+.mitad-inferior {
+    background-image: url('images/viña.png');
+}
+
+/* BARRA DIVISORIA CENTRAL CON MINI BANDERAS */
+/* BARRA DIVISORIA CENTRAL CON MINI BANDERAS */
+.barra-divisoria {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    transform: translateY(-50%);
+    background: rgba(229, 193, 88, 0.6); 
+    display: flex;
+    justify-content: space-between; /* Empuja un grupo a la izquierda y otro a la derecha */
+    padding: 0 25px; /* Margen de separación con los bordes de la pantalla del celular */
+    align-items: center;
+    z-index: 22;
+}
+
+/* Contenedores de los grupos de banderas */
+.grupo-banderas-izq,
+.grupo-banderas-der {
+    display: flex;
+    gap: 15px; /* Espacio exacto y fijo entre las dos banderas de cada lado */
+    align-items: center;
+}
+
+/* Estilo base para cada mini bandera */
+.mini-bandera {
+    width: 32px;
+    height: 20px;
+    border-radius: 2px;
+    background-size: cover;
+    background-position: center;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.5);
+    filter: brightness(90%);
+}
+
+.mini-chile { background-image: url('images/chile.png'); }
+.mini-brasil { background-image: url('images/brazil.jpeg'); }
+.mini-argentina { background-image: url('images/argentina.jpeg'); }
+.mini-usa { background-image: url('images/usa.png'); }
+
+/* Separación para que Argentina y Brasil salgan detrás del logo */
+.mini-chile, .mini-brasil {
+    margin-right: auto; /* Empuja hacia la izquierda */
+}
+
+.mini-brasil {
+    margin-left: 10px; /* Separa Brasil de Chile */
+}
+
+.mini-argentina, .mini-usa {
+    margin-left: auto; /* Empuja hacia la derecha */
+}
+
+.mini-argentina {
+    margin-right: 10px; /* Separa Argentina de EE.UU. */
+}
+
+/* EL LOGO CENTRAL REFORMADO (Sin fondo blanco rígido) */
+.logo-central {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: none;
+    border: none;
+    z-index: 30;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    outline: none;
+    width: auto;
+    height: auto;
+}
+
+.logo-wrapper {
+    width: 115px; /* Tamaño ideal para que se aprecien las letras */
+    height: 115px;
+    border-radius: 50%;
+    overflow: hidden;
+    box-shadow: 0px 8px 25px rgba(0, 0, 0, 0.6);
+    transition: transform 0.2s ease;
+    background-color: transparent; /* Remueve el fondo blanco */
+}
+
+.logo-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain; /* Ajusta la imagen completa sin recortes */
+}
+
+.texto-presione {
+    margin-top: 10px;
+    font-size: 0.85rem;
+    font-weight: bold;
+    color: #ffffff;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: rgba(20, 20, 20, 0.85);
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(229, 193, 88, 0.4);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+
+}
+
+.logo-central:active .logo-wrapper {
+    transform: scale(0.93);
+}
+
+@keyframes parpadeoPresione {
+    0%, 100% { opacity: 0.5; transform: scale(0.97); }
+    50% { opacity: 1; transform: scale(1.03); }
+}
+
+/* ==========================================================
+   PANTALLA 2: CONTENIDO DE LA INVITACIÓN
+   ========================================================== */
+.contenedor-invitacion {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    background-color: #0d1114; /* Fondo oscuro de base */
+    z-index: 1;
+    overflow: hidden;
+}
+
+/* REESTRUCTURACIÓN DE CAPAS PARA LAS BANDERAS */
+.fondo-banderas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    z-index: 2; /* Cambiado de -1 a 2 para que sea visible ante el body */
+}
+
+.fila-banderas {
+    display: flex;
+    width: 100%;
+    height: 50vh;
+}
+
+/* Cuadrantes de las banderas de fondo */
+.cuadrante {
+    width: 50%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    filter: grayscale(15%) brightness(40%); /* Ajustado para que se vean más claras pero legibles */
+}
+
+/* Capa oscura extra sobre las banderas para asegurar legibilidad */
+.cuadrante::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; width: 100%; height: 100%;
+    background-color: rgba(13, 17, 20, 0.25);
+    z-index: 3;
+}
+
+/* Tus archivos e imágenes reales */
+.bandera-chile { background-image: url('images/chile.png'); }
+.bandera-brasil { background-image: url('images/brazil.jpeg'); }
+.bandera-argentina { background-image: url('images/argentina.jpeg'); }
+.bandera-usa { background-image: url('images/usa.png'); }
+
+/* LA CARTA / TARJETA (Flota por sobre las banderas con z-index alto) */
+.carta {
+    background: rgba(26, 36, 47, 0.78); /* Fondo gris azulado con opacidad equilibrada */
+    backdrop-filter: blur(14px); /* Suaviza el fondo de las banderas de forma estética */
+    -webkit-backdrop-filter: blur(14px); 
+    border: 1px solid rgba(255, 255, 255, 0.07);
+    padding: 25px 20px;
+    border-radius: 22px;
+    text-align: center;
+    width: 100%;
+    max-width: 350px;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+    z-index: 10; /* Forzado al frente de las banderas */
+}
+
+/* Estilo para el logo dentro de la invitación */
+.logo-invitacion {
+    width: 65px;
+    height: 65px;
+    margin: 0 auto 12px auto;
+}
+
+.logo-invitacion img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.carta h1 {
+    font-size: 1.3rem;
+    margin-bottom: 6px;
+    color: #e5c158; /* Dorado viejo mate */
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    line-height: 1.3;
+}
+
+.subtitulo {
+    font-size: 0.85rem;
+    color: #b0b0b0;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+/* RELOJ DE CUENTA REGRESIVA */
+.contador-contenedor {
+    background: rgba(0, 0, 0, 0.45);
+    padding: 10px;
+    border-radius: 12px;
+    margin-bottom: 15px;
+    border: 1px solid rgba(229, 193, 88, 0.15);
+}
+
+.titulo-cuenta {
+    font-size: 0.72rem;
+    color: #e5c158;
+    text-transform: uppercase;
+    margin-bottom: 6px;
+    letter-spacing: 1px;
+}
+
+.reloj {
+    display: flex;
+    justify-content: space-around;
+}
+
+.tiempo-bloque {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    min-width: 48px;
+}
+
+.tiempo-bloque span {
+    font-size: 1.15rem;
+    font-weight: bold;
+    color: #ffffff;
+}
+
+.tiempo-bloque sub {
+    font-size: 0.62rem;
+    color: #95a5a6;
+    text-transform: uppercase;
+}
+
+/* Bloque de detalles */
+.detalles {
+    background: rgba(0, 0, 0, 0.35);
+    padding: 14px 12px;
+    border-radius: 12px;
+    text-align: left;
+    margin-bottom: 18px;
+    border-left: 3px solid #e5c158;
+}
+
+.detalles p {
+    margin-bottom: 10px;
+    font-size: 0.85rem;
+    color: #dcdcdc;
+}
+
+.detalles p:last-child {
+    margin-bottom: 0;
+}
+
+#hora-local sub {
+    display: block;
+    font-size: 0.72rem;
+    color: #81ecec;
+    margin-top: 2px;
+}
+
+.mensaje {
+    font-size: 0.82rem;
+    line-height: 1.4;
+    color: #c0c0c0;
+    margin-bottom: 20px;
+}
+
+/* BOTÓN DE CONFIRMACIÓN */
+.btn-confirmar {
+    display: inline-block;
+    background-color: #1e7e34;
+    color: #ffffff;
+    text-decoration: none;
+    padding: 11px 24px;
+    border-radius: 6px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+.btn-confirmar:active {
+    transform: scale(0.97);
+    background-color: #1c692c;
+}
+
+/* ==========================================================
+   CLASES DE ANIMACIÓN (Controladas por JS)
+   ========================================================== */
+.portada-abierta {
+    transform: translateY(-100vh); /* Desplaza la portada hacia arriba */
+}
+
+/* ==========================================================
+   ALINEACIÓN DE BANDERAS ALREDEDOR DEL LOGO EN LA INVITACIÓN
+   ========================================================== */
+.fila-logo-invitacion {
+    display: flex;
+    justify-content: space-between; /* Distribuye equitativamente: izquierda, centro y derecha */
+    align-items: center;
+    width: 100%;
+    margin: 0 auto 15px auto;
+    padding: 0 5px;
+}
+
+/* Contenedor interno para los pares de banderas en la carta */
+.grupo-mini-banderas {
+    display: flex;
+    gap: 8px; /* Espacio compacto entre el par de banderas dentro de la tarjeta */
+    align-items: center;
+}
+
+/* Reajustamos el margen del logo para que no choque */
+.logo-invitacion {
+    width: 65px;
+    height: 65px;
+    margin: 0 10px; /* Pequeño espacio de respiro con las banderas de los lados */
+    flex-shrink: 0; /* Evita que el logo se deforme en pantallas chicas */
+}
+
+.logo-invitacion img {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
